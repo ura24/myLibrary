@@ -1,0 +1,54 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-4">
+  <div class="row mb-4">
+    <div class="col-9">
+      <h2>書籍一覧</h2>
+    </div>
+    <div class="col-3">
+      <a class="btn btn-outline-primary" href="{{ url_for('book_add') }}" role="button">新規登録</a>
+    </div>
+  </div>
+  <table class="table">
+    <thead class="thead-dark">
+      <tr class="table-active">
+        <th scope="col">#</th>
+        <th scope="col">タイトル</th>
+        <th scope="col">出版社</th>
+        <th scope="col">著者</th>
+        <th scope="col">ページ数</th>
+        <th scope="col">カテゴリー</th>
+        <th scope="col">価格</th>
+        <th scope="col">登録日</th>
+        <th scope="col">読了日</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for book in books %}
+      <tr>
+        <th scope="row">{{ book.id }}</th>
+        <td>
+          <a class="text-decoration-none" href="{{ url_for('book_detail', id=book.id) }}">
+            {{ book.title }}
+          </a>
+        </td>
+        <td>{{ book.publisher }}</td>
+        <td>{{ book.author }}</td>
+        <td>{{ book.page }}</td>
+        <td>{{ book.category }}</td>
+        <td>{{ book.price }}円</td>
+        <td>{{ book.created_at.date().strftime('%Y-%m-%d') }}</td>
+        {% if book.finished_at != None %}
+        <td>{{ book.finished_at }}</td>
+        {% else %}
+        <td></td>
+        {% endif %}
+      </tr>
+    </tbody>
+    {% endfor %}
+  </table>
+</div>
+
+{% endblock %}

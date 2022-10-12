@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="container mt-5 mb-5 d-flex justify-content-center">
+  <div class="card px-1 py-4" style="width: 800px;">
+    <div class="card-body">
+      <h2 class="card-title mb-3">書籍情報</h6>
+      <form action="{{ url_for('book_update', id=book.id) }}" method="POST">
+        <div class="row">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">タイトル</label>
+              <input name="title" class="form-control" type="text" value="{{ book.title }}"></input>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">著者</label>
+              <input name="author" class="form-control" type="text"value="{{ book.author }}"></input>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">出版社</label>
+              <input name="publisher" class="form-control" type="text" value="{{ book.publisher }}"></input>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlSelect1">カテゴリー</label>
+              <select name="category" class="form-select" id="exampleFormControlSelect1">
+                <option>文学・小説</option>
+                <option>社会・ビジネス</option>
+                <option>旅行・地図</option>
+                <option>趣味</option>
+                <option>実用・教育</option>
+                <option>アート・教養・エンタメ</option>
+                <option>事典・図鑑・語学・辞書</option>
+                <option>こども</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">ページ数</label>
+              <input name="page" class="form-control" type="number" value="{{ book.page }}"></input>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">価格</label>
+              <input name="price" class="form-control" type="number" value="{{ book.price }}"></input>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlInput1">isbnコード(省略可)</label>
+              <input name="isbn" class="form-control" type="number" value="{{ book.isbn }}"></input>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">感想・メモ</label>
+              <textarea name="memo" class="form-control" row="6" >{{ book.memo }}</textarea>
+            </div>
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label for="exampleFormControlTextarea1">読了日</label>
+              <input type="date" class="form-control" name="finished_at" value="{{ book.finished_at }}">
+            </div>
+          </div>
+        </div>
+
+        <div class="row mt-3">
+          <div class="col text-center">
+            <button type="submit" class="btn btn-primary">更新</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
